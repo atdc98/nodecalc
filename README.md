@@ -1,5 +1,5 @@
 # nodecalc
-A simple node.js calculator using Express and EJS
+A simple node.js calculator using Express, AngularJS, and EJS
 
 Clone the repository and run `npm install` to install all dependencies.
 
