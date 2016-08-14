@@ -4,9 +4,11 @@ var port = 8080;
 
 app.use(express.static(__dirname + '/public'));
 
-app.set('views', './views/ejs');
-app.set('view engine', 'ejs');
+var view_engine = 'ejs';
+app.set('views', './views/' + view_engine);
+app.set('view engine', view_engine);
 
+// plans to add db logging using a logger module
 /*var logger = require('./logger');
 app.use(logger);*/
 
