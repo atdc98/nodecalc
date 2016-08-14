@@ -92,9 +92,11 @@ calcApp.controller('CalcController', ['$scope', function ($scope) {
 /*
 $(document).keypress(function(event) {
   if (event.key === 'Enter') {
+    // if key pressed is Enter, eval
     e();
   }
   else {
+    // record the keypress (TODO: make sure only numbers are recorded)
     a(String.fromCharCode(event.which));
   }
 });
