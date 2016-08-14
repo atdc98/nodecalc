@@ -10,43 +10,35 @@
   <link rel="stylesheet" href="/css/calc-style.css">
   <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body>
+<body ng-app="NodeCalc" ng-controller="CalcController">
   <form class="calc">
     <p class="calc-display">
       <input type="text" name="res" id="res" value="0" class="calc-display-input" onfocus="this.blur()">
     </p>
     <p class="calc-row">
-      <button type="button" class="calc-button calc-button-gray" onclick="get_m()">mrc</button>
-      <button type="button" class="calc-button calc-button-gray" onclick="remove_m()">m-</button>
-      <button type="button" class="calc-button calc-button-gray" onclick="add_m(document.getElementById('res').value)">m+</button>
-      <button type="button" class="calc-button calc-button-red calc-button-big" onclick="a('/')">/</button>
+      <button ng-repeat="button in buttons.memory" type="button" class="calc-button calc-button-gray" ng-click="button.action()">{{button.text}}</button>
+      <button type="button" class="calc-button calc-button-red calc-button-big" ng-click="buttons.symbols.divide.action(buttons.symbols.divide.text)" ng-keypress="buttons.symbols.divide.action(buttons.symbols.divide.text)">{{buttons.symbols.divide.text}}</button>
     </p>
     <p class="calc-row">
-      <button type="button" class="calc-button" onclick="a('7')">7</button>
-      <button type="button" class="calc-button" onclick="a('8')">8</button>
-      <button type="button" class="calc-button" onclick="a('9')">9</button>
-      <button type="button" class="calc-button calc-button-red calc-button-big" onclick="a('*')">x</button>
+      <button ng-repeat="button in buttons.numbers.row7to9" type="button" class="calc-button" ng-click="button.action(button.text)"  ng-keypress="button.action(button.text)">{{button.text}}</button>
+      <button type="button" class="calc-button calc-button-red calc-button-big" ng-click="buttons.symbols.multiply.action(buttons.symbols.multiply.text)" ng-keypress="buttons.symbols.multiply.action(buttons.symbols.multiply.text)">{{buttons.symbols.multiply.text}}</button>
     </p>
     <p class="calc-row">
-      <button type="button" class="calc-button" onclick="a('4')">4</button>
-      <button type="button" class="calc-button" onclick="a('5')">5</button>
-      <button type="button" class="calc-button" onclick="a('6')">6</button>
-      <button type="button" class="calc-button calc-button-red calc-button-big" onclick="a('-')">-</button>
+      <button ng-repeat="button in buttons.numbers.row4to6" type="button" class="calc-button" ng-click="button.action(button.text)">{{button.text}}</button>
+      <button type="button" class="calc-button calc-button-red calc-button-big" ng-click="buttons.symbols.subtract.action(buttons.symbols.subtract.text)">{{buttons.symbols.subtract.text}}</button>
     </p>
     <p class="calc-row">
-      <button type="button" class="calc-button" onclick="a('1')">1</button>
-      <button type="button" class="calc-button" onclick="a('2')">2</button>
-      <button type="button" class="calc-button" onclick="a('3')">3</button>
-      <button type="button" class="calc-button calc-button-red calc-button-big" onclick="a('+')">+</button>
+      <button ng-repeat="button in buttons.numbers.row1to3" type="button" class="calc-button" ng-click="button.action(button.text)">{{button.text}}</button>
+      <button type="button" class="calc-button calc-button-red calc-button-big" ng-click="buttons.symbols.add.action(buttons.symbols.add.text)">{{buttons.symbols.add.text}}</button>
     </p>
     <p class="calc-row">
-      <button type="button" class="calc-button" onclick="a('0')">0</button>
-      <button type="button" class="calc-button" onclick="a('.')">.</button>
-      <button type="button" class="calc-button" onclick="s('0')">C</button>
-      <button type="button" class="calc-button calc-button-yellow calc-button-big" onclick="e()">=</button>
+      <button type="button" class="calc-button" ng-click="buttons.numbers.zero.action(buttons.numbers.zero.text)">{{buttons.numbers.zero.text}}</button>
+      <button type="button" class="calc-button" ng-click="buttons.symbols.decimal.action(buttons.symbols.decimal.text)">{{buttons.symbols.decimal.text}}</button>
+      <button type="button" class="calc-button" ng-click="buttons.verbs.clear.action(buttons.verbs.clear.text)">{{buttons.verbs.clear.text}}</button>
+      <button type="button" class="calc-button calc-button-yellow calc-button-big" ng-click="buttons.verbs.calculate.action(buttons.verbs.calculate.text)">{{buttons.verbs.calculate.text}}</button>
     </p>
   </form>
-
+  <script src="/js/angular.js"</script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="/js/calc.js"></script>
 </body>
